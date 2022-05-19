@@ -1,15 +1,171 @@
-/* **********************************************
-Basic mechanics
-Hide all paragraphs by default
-Show them when they receive the class 'on'
-Hide them when they receive the class 'off'
-Feel free to adjust the defaults to your needs.
-********************************************** */
+
+body { 
+	margin: 0;
+	display: grid;
+	columns: 6;
+	grid-template-columns: 1fr 50px 215px auto 200px 1fr;
+	grid-template-rows: 1fr 50px auto auto auto 1fr;
+	height: 100vh;
+	background-color: rgb(33, 33, 33);
+	overflow: hidden;
+}
+
+iframe {
+	grid-column-start: 2;
+	grid-row-start: 2;
+	grid-column-end: 6;
+	grid-row-end: 6;	
+	width: 850px;
+	height: 480px;
+	clip-path: inset(4.8em 0em);	
+}
+
+#background { 
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	height: 21vh;
+	width: 93vh;
+	background-color: black;
+	z-index: 0;
+	border-style: solid;
+	border-color: black;
+	border-radius: 10px;
+	padding: 100px;
+	filter:blur(100px);
+	pointer-events: none;
+	opacity: 0;
+}
+
+
+
+
+
+
+/* Geluidsbalk */
+#geluid-hoogte-in { 
+	display: flex;
+	width: 0px;
+	height: 36px;
+	border-style: solid;
+	border-radius: 10px;
+	border-color: rgb(164, 0, 0);
+	border-width: 3px;
+	background-color: rgb(164, 0, 0);
+	filter: drop-shadow(20px);
+	opacity: 0;
+	z-index: 999999;
+	/* margin-bottom: 9px; */
+	grid-column-start: 3;
+	grid-row-start: 2;
+	grid-column-end: 5;	
+}
+
+#geluid-hoogte-uit { 
+	display: flex;
+	width: 50px;
+	height: 37px;
+	filter: drop-shadow(20px);
+	grid-column-start: 2;
+	grid-row-start: 2;
+	grid-column-end: 4;	
+	margin-top: 2px;	
+	justify-content: center;
+	align-items: center;
+	z-index: 999999;
+	
+}
+
+
+#geluid-hoogte-border { 
+	display: flex;
+	width: 200px;
+	height: 37px;
+	border-style: solid;
+	border-radius: 10px;
+	border-color: rgb(164, 0, 0);
+	grid-column-start: 3;
+	grid-row-start: 2;
+	grid-column-end: 5;	
+	z-index: 999999;
+	align-items: center;
+}
+
+.speaker { 
+	width: 25px;
+	height: 20px;
+}
+
+
+
+
+/* Geluid-woord */
+#blok-status { 
+	display: flex;
+	text-align: center;
+	grid-column-start: 3;
+	grid-row-start: 3;
+	grid-row-end: 5;
+	grid-column-end: 5;	
+	width: auto;
+	height: 30px;
+	z-index: 999999;
+	background-color: rgb(164, 0, 0);
+	border-radius: 10px;
+	border-style: solid;
+	color: rgb(164, 0, 0);
+	border-bottom-color: none;
+	border-bottom-width: none;
+	opacity: 0;
+	padding: 10px;
+}
+
+.tekst-status {
+	display: flex;
+	font-size: 16px;
+	color: black;
+	margin: auto;
+	top: 15px;
+	color: white;
+	opacity: 0;
+}
+
+
+.tekst-status2 { 
+	display: flex;
+	font-size: 16px;
+	color: black;
+	margin: auto;
+	top: 15px;
+	color: white;
+	opacity: 0;
+}
+
+
+
+
+
+/* Closed captions */
+#closed-captions {
+	display: flex;
+	grid-column-start: 2;
+	grid-row-start: 5;
+	grid-column-end: 6;
+	margin-top:50px;
+	justify-content: center;
+	align-items: center;
+}
+
 #closed-captions p {
 	opacity: 0;
 	transition: .05s;
 	position: absolute;
+	font-size: 20px;
+	/* width: 850px; */
+	margin: .7em 0em .55em 0em;
 }
+
 #closed-captions .on {
 	opacity: 1;
 }
@@ -17,109 +173,1355 @@ Feel free to adjust the defaults to your needs.
 	transition: .2s;
 	opacity: 0;
 }
+
+
+
+
+
+/* Voices */
 .voice1 {
+	font-family: "Brenner Mono";
 	font-style: italic;
+	font-weight: 300;
+	color:white;
 }
+
 .voice2 {
-	font-weight: bold;
-}
-
-/* **********************************************
-The first paragraph, with extended timing for 
-	all siblings. Basically what it does is that
-	it shows the text after a delay, which 
-	corresponds with the time that the word is
-	spoken.
-You probably want to change the styling.
-********************************************** */
-.p0 span {
-	opacity: 0;
-	font-family: brenner;
-}
-.p0.on span:first-of-type {
-	opacity: 1;
-	transition: 0s;
-	font-weight: 200;
-}
-.p0.on span:nth-of-type(2) {
-	opacity: 1;
-	transition: 0s .4s;
-	margin-right: -.25em;
-	font-weight: 400;
-}
-.p0.on span:nth-of-type(3) {
-	opacity: 1;
-	transition: 0s .5s;
-	margin-right: -.25em;
+	font-family: "Brenner Sans";
+	font-style: Normal;
 	font-weight: 600;
-}
-.p0.on span:nth-of-type(4) {
-	opacity: 1;
-	transition: 0s .7s;
-	margin-right: -.25em;
-	font-weight: 800;
-}
-.p0.on span:nth-of-type(5) {
-	opacity: 1;
-	transition: 0s 1.1s;
-	margin-right: -.25em;
-	font-family: "brenner sans";
-}
-.p0.on span:nth-of-type(6) {
-	opacity: 1;
-	transition: 0s 1.4s;
-	margin-right: -.25em;
-	font-family: "brenner display";
-}
-.p0.on span:nth-of-type(7) {
-	opacity: 1;
-	transition: 0s 1.7s;
-	margin-right: -.25em;
-	font-family: "brenner script";
-}
-.p0.on span:nth-of-type(8) {
-	opacity: 1;
-	transition: 0s 2s;
-	font-family: "brenner script";
-}
-.p0.on span:nth-of-type(9) {
-	opacity: 1;
-	transition: 0s 3s;
-	font-family: "brenner Sans condensed";
-}
-.p0.on span:nth-of-type(10) {
-	opacity: 1;
-	transition: 0s 3.2s;
-	font-family: "brenner mono";
-}
-.p0.on span:nth-of-type(11) {
-	opacity: 1;
-	transition: 0s 3.7s;
-	font-family: "brenner slab";
+	color:white;
 }
 
-.p1.on {
-	background: hotpink;
-	color: red;
-	font-size: 200px;
+.voice3 {
+	font-family: "Brenner Slab";
+	font-style: normal;
+	font-weight: 600;
+	color:white;
 }
+
+.voice4 {
+	font-family: "Brenner";
+	font-style: italic;
+	font-weight: 300;
+	color:white;
+}
+
+
+
+
+/* Spans */
+.p0.on span:first-of-type, .p1.on span:first-of-type, .p6.on span:first-of-type, .p44.on span:first-of-type {
+	opacity: 1;
+	font-family: "Brenner Mono";
+	font-style: Normal;
+	font-weight: 400;
+	color: white;
+	background-color: rgb(164, 0, 0);
+	border-style: solid;
+	border-width: 0;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+.p1.on span:nth-of-type(2) { 
+	opacity: 1;
+}
+
+
+
 
 /* **********************************************
-Sounds.
-	You can style the whole body, or you can 
-	style anything within the body the moment
-	a sound starts.
+Sounds
 *********************************************  */
-
-/* The moment the class .sound1 is added to the body, the background is yellow */
-.sound1 {
-	background: yellow;
+/* Sound 0 */
+.sound0 iframe { 
+	animation-name: shake;
+	animation-duration: .7s;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
 }
 
-iframe {
-	transition: 1s;
+.sound0 #geluid-hoogte-in { 
+	animation-name: heen-en-terug0;
+	animation-duration: 2s;
 }
-/* The moment the class .sound1 is added to the body, the movie makes a turn */
-.sound1 iframe {
-	transform: rotate(1turn);
+
+@keyframes shake {
+	0% {
+	  transform: translateX(0);
+	}
+  
+	20% {
+	  transform: translateX(-10px);
+	}
+  
+	40% {
+	  transform: translateX(10px);
+	}
+  
+	60% {
+	  transform: translateX(-10px);
+	}
+  
+	80% {
+	  transform: translateX(10px);
+	}
+  
+	100% {
+	  transform: translateX(0);
+	}
+  }
+  
+/* @keyframes shake {
+	0% { transform: translate(1px, 1px) rotate(0deg); }
+	10% { transform: translate(-1px, -2px) rotate(-1deg); }
+	20% { transform: translate(-3px, 0px) rotate(1deg); }
+	30% { transform: translate(3px, 2px) rotate(0deg); }
+	40% { transform: translate(1px, -1px) rotate(1deg); }
+	50% { transform: translate(-1px, 2px) rotate(-1deg); }
+	60% { transform: translate(-3px, 1px) rotate(0deg); }
+	70% { transform: translate(3px, 1px) rotate(-1deg); }
+	80% { transform: translate(-1px, -1px) rotate(1deg); }
+	90% { transform: translate(1px, 2px) rotate(0deg); }
+	100% { transform: translate(1px, -2px) rotate(-1deg); }
+  } */
+
+ @keyframes heen-en-terug0 { 
+	0% { 
+		width: 0px;
+		opacity: 1;
+	}
+	25%, 50%, 75% { 
+		width: 140px;
+		opacity: 1;
+	}
+	99% { 
+		opacity: 1;
+	}
+   100% {
+	   width: 0px;
+	   opacity: 0; 
+   }
 }
+
+
+
+
+
+/* Sound 1 */
+.sound1 #background { 
+	animation-name: alarm;
+	animation-duration: .5s;
+	animation-iteration-count: 2;
+}
+
+.sound1 #geluid-hoogte-in { 
+	animation-name: heen-en-terug;
+	animation-duration: 2s;
+}
+
+@keyframes alarm { 
+	0% { 
+	   background-color: rgb(33, 33, 33);;
+	   opacity: 1;
+	}
+	50% { 
+	   background-color: red;
+	}
+	99% { 
+		opacity: 1;
+	}
+   100% { 
+	   background-color: rgb(33, 33, 33);;
+	   opacity: 0;
+   }
+}
+
+@keyframes heen-en-terug { 
+	0% { 
+		width: 0px;
+		opacity: 1;
+	}
+	25%, 50%, 75% { 
+		width: 130px;
+		opacity: 1;
+	}
+	99% { 
+		opacity: 1;
+	}
+   100% {
+	   width: 0px;
+	   opacity: 0; 
+   }
+}
+
+
+
+
+/* Alle sounds */
+.sound0::after, .sound1::after, .sound2::after, .sound3::after, .sound4::after, .sound9::after {
+	display: flex;
+	text-align: center;
+	grid-column-start: 4;
+	grid-row-start: 2;
+	grid-row-end: 6;
+	grid-column-end: 6;	
+	width: 150px;
+	height: 20px;
+	z-index: 999999;
+	background-color: rgb(164, 0, 0);
+	border: solid rgb(164, 0, 0);
+	color: rgb(164, 0, 0);
+	opacity: 0;
+	padding: 10px;
+	content: "alarm";
+	color: white;
+	font-size: 16px;
+	justify-content: center;
+	align-items: center;
+	animation-name: fade-in1;
+	animation-duration: 2s;
+	animation-iteration-count: 1;	
+}
+
+.sound0::after { 
+	animation-name: fade-in0;
+	animation-duration: 2s;
+	animation-iteration-count: 1;
+	content: "ominious horn";
+}
+
+.sound1::after { 
+	animation-name: fade-in1;
+	animation-duration: 2s;
+	animation-iteration-count: 1;
+	content: "alarm";
+}
+
+.sound2::after { 
+	animation-name: fade-in2;
+	animation-duration: 2s;
+	animation-iteration-count: 1;
+	content: "sirene";
+}
+
+.sound3::after { 
+	animation-name: fade-in3;
+	animation-duration: 2s;
+	animation-iteration-count: 1;
+	content: "computer processing sounds";
+}
+
+.sound4::after { 
+	animation-name: fade-in4;
+	animation-duration: 2s;
+	animation-iteration-count: 1;
+	content: "end of processing";
+}
+
+.sound5::after { 
+	animation-name: fade-in5;
+	animation-duration: 2s;
+	animation-iteration-count: 1;
+	content: "computer processing sounds";
+}
+
+.sound6::after { 
+	animation-name: fade-in6;
+	animation-duration: 2s;
+	animation-iteration-count: 1;
+	content: "end of processing";
+}
+
+.sound7::after { 
+	animation-name: fade-in7;
+	animation-duration: 2s;
+	animation-iteration-count: 1;
+	content: "computer processing sounds";
+}
+
+.sound8::after { 
+	animation-name: fade-in8;
+	animation-duration: 2s;
+	animation-iteration-count: 1;
+	content: "end of processing";
+}
+
+.sound9::after { 
+	animation-name: fade-in9;
+	animation-duration: 43s;
+	animation-iteration-count: 1;
+	content: "increasingly high noise";
+}
+
+.sound10::after { 
+	animation-name: fade-in10;
+	animation-duration: 17s;
+	animation-iteration-count: 1;
+	content: "unsettling music and high noise";
+}
+
+.sound11::after { 
+	animation-name: fade-in11;
+	animation-duration: 2s;
+	animation-iteration-count: 1;
+	content: "alert notication beep";
+}
+
+.sound12::after { 
+	animation-name: fade-in12;
+	animation-duration: 24s;
+	animation-iteration-count: 1;
+	content: "unsettling music and high noise";
+}
+
+
+
+@keyframes fade-in0 { 
+	0% { 
+	   opacity: 0;
+	}
+	1%, 50%, 99%{ 
+	   opacity: 1;
+	}
+   100% { 
+	   opacity: 0;
+   }
+}
+
+ @keyframes fade-in1 { 
+	 0% { 
+		opacity: 0;
+	 }
+	 1%, 50%, 99%{ 
+		opacity: 1;
+	 }
+	100% { 
+		opacity: 0;
+	}
+ }
+
+ @keyframes fade-in2 { 
+	0% { 
+	   opacity: 0;
+	}
+	1%, 50%, 99%{ 
+	   opacity: 1;
+	}
+   100% { 
+	   opacity: 0;
+   }
+}
+
+@keyframes fade-in3 { 
+	0% { 
+	   opacity: 0;
+	}
+	1%, 50%, 99%{ 
+	   opacity: 1;
+	}
+   100% { 
+	   opacity: 0;
+   }
+}
+
+@keyframes fade-in4 { 
+	0% { 
+	   opacity: 0;
+	}
+	1%, 50%, 99%{ 
+	   opacity: 1;
+	}
+   100% { 
+	   opacity: 0;
+   }
+}
+
+@keyframes fade-in5 { 
+	0% { 
+	   opacity: 0;
+	}
+	1%, 50%, 99%{ 
+	   opacity: 1;
+	}
+   100% { 
+	   opacity: 0;
+   }
+}
+
+@keyframes fade-in6 { 
+	0% { 
+	   opacity: 0;
+	}
+	1%, 50%, 99%{ 
+	   opacity: 1;
+	}
+   100% { 
+	   opacity: 0;
+   }
+}
+
+@keyframes fade-in7 { 
+	0% { 
+	   opacity: 0;
+	}
+	1%, 50%, 99%{ 
+	   opacity: 1;
+	}
+   100% { 
+	   opacity: 0;
+   }
+}
+
+@keyframes fade-in8 { 
+	0% { 
+	   opacity: 0;
+	}
+	1%, 50%, 99%{ 
+	   opacity: 1;
+	}
+   100% { 
+	   opacity: 0;
+   }
+}
+
+
+
+
+
+/* Sound 2 */
+.sound2 #background{ 
+	animation-name: sirene;
+	animation-duration: 1s;
+	animation-iteration-count: 2;
+ }
+
+ .sound2 #geluid-hoogte-in { 
+	animation-name: heen-en-terug2;
+	animation-duration: 2s;
+ }
+
+ @keyframes sirene { 
+	 0% { 
+		background-color: rgb(33, 33, 33);;
+		opacity: 1;
+	 }
+	 20% { 
+		 background-color: blue;
+	 }
+	 40% { 
+		background-color: red;
+	 }
+	 60% { 
+		 background-color: blue;
+	 }
+	 80% { 
+		 background-color: red;
+	 }
+	 99% { 
+		opacity: 1;
+	 }
+	100% { 
+		background-color: rgb(33, 33, 33);;
+		opacity: 0;
+	}
+ }
+
+ @keyframes heen-en-terug2 { 
+	0% { 
+		width: 0px;
+		opacity: 1;
+	}
+	25%, 50%, 75% { 
+		width: 100px;
+		opacity: 1;
+	}
+	99% { 
+		opacity: 1;
+	}
+   100% {
+	   width: 0px;
+	   opacity: 0; 
+   }
+}
+
+
+
+
+
+/* Sound 3 */
+ .sound3 #geluid-hoogte-in { 
+	animation-name: heen-en-terug3;
+	animation-duration: 2s;
+ }
+
+ @keyframes heen-en-terug3 { 
+	0% { 
+		width: 0px;
+		opacity: 1;
+	}
+	25%, 50%, 75% { 
+		width: 70px;
+		opacity: 1;
+	}
+	99% { 
+		opacity: 1;
+	}
+   100% {
+	   width: 0px;
+	   opacity: 0; 
+   }
+}
+#balk { 
+	position: absolute;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	width: 250px;
+	z-index: 0;
+	filter:blur(170px);
+	pointer-events: none;
+}
+
+
+/* #balk { 
+	position: absolute;
+	height: 100vh;
+	width: 300px;
+	opacity: 0;
+	justify-content: center;
+	align-items: center;
+    clip-path: inset(0px -15px 0px 0px);
+	background-color: grey;
+	border-style: solid;
+	border-color: black;
+	border-radius: 100px;
+	filter:blur(100px)
+} */
+
+.sound3 #balk { 
+	animation-name: naar-rechts;
+	animation-duration: 2s;
+	animation-iteration-count: 1;
+	animation-timing-function: forwards;
+	animation-timing-function: linear;
+ }
+
+ @keyframes naar-rechts { 
+	0% { 
+		background-color: grey;
+		opacity: 0;
+		transform: translateX(-19em);	
+	}
+	15% { 
+		transform: translateX(0em);
+		opacity: 1;		
+	}
+	59.9% { 
+		transform: translateX(80em);
+		background-color: grey;
+	}
+	60% { 
+		transform: translateX(80em);
+		background-color: grey;
+	}
+	65% { 
+		opacity: 1;
+	}
+	75% { 
+		opacity: 0;
+	}
+	85% { 
+		opacity: 1;
+	}
+   99% {
+		opacity: 1;
+   }
+   100% { 
+		transform: translateX(80em);
+		background-color: green;
+		opacity: 0;
+   }
+} 
+
+
+
+
+
+/* Sound 4  */
+.sound4 #geluid-hoogte-in { 
+	animation-name: heen-en-terug4;
+	animation-duration: 2s;
+ }
+
+@keyframes heen-en-terug4 { 
+	0% { 
+		width: 70px;
+		opacity: 1;
+	}
+	25%, 50%, 75% { 
+		width: 150px;
+		opacity: 1;
+	}
+	99% { 
+		opacity: 1;
+	}
+   100% {
+	   width: 0px;
+	   opacity: 0; 
+   }
+}
+
+
+
+
+
+
+
+
+/* Sound 5 */
+.sound5 #geluid-hoogte-in { 
+	animation-name: heen-en-terug5;
+	animation-duration: 2.5s;
+ }
+
+@keyframes heen-en-terug5 { 
+	0% { 
+		width: 0px;
+		opacity: 1;
+	}
+	25%, 50%, 75% { 
+		width: 70px;
+		opacity: 1;
+	}
+	99% { 
+		opacity: 1;
+	}
+   100% {
+	   width: 0px;
+	   opacity: 0; 
+   }
+}
+
+.sound5 #balk { 
+	animation-name: naar-rechts5;
+	animation-duration: 2s;
+	animation-iteration-count: 1;
+	animation-timing-function: forwards;
+	animation-timing-function: linear;
+ }
+
+ @keyframes naar-rechts5 { 
+	0% { 
+		background-color: grey;
+		opacity: 0;
+		transform: translateX(-19em);	
+	}
+	15% { 
+		transform: translateX(0em);
+		opacity: 1;		
+	}
+	59.9% { 
+		transform: translateX(80em);
+		background-color: grey;
+	}
+	60% { 
+		transform: translateX(80em);
+		background-color: grey;
+	}
+	65% { 
+		opacity: 1;
+	}
+	75% { 
+		opacity: 0;
+	}
+	85% { 
+		opacity: 1;
+	}
+   99% {
+		opacity: 1;
+   }
+   100% { 
+		transform: translateX(80em);
+		background-color: green;
+		opacity: 0;
+   }
+} 
+
+
+
+
+
+/* Sound 6 */
+.sound6 #geluid-hoogte-in { 
+	animation-name: heen-en-terug6;
+	animation-duration: 2s;
+ }
+
+@keyframes heen-en-terug6 { 
+	0% { 
+		width: 70px;
+		opacity: 1;
+	}
+	25%, 50%, 75% { 
+		width: 150px;
+		opacity: 1;
+	}
+	99% { 
+		opacity: 1;
+	}
+   100% {
+	   width: 0px;
+	   opacity: 0; 
+   }
+}
+
+/* Sound 7 */
+.sound7 #geluid-hoogte-in { 
+	animation-name: heen-en-terug7;
+	animation-duration: 2.5s;
+ }
+
+ .sound7 #balk { 
+	animation-name: naar-rechts7;
+	animation-duration: 2s;
+	animation-iteration-count: 1;
+	animation-timing-function: forwards;
+	animation-timing-function: linear;
+ }
+
+ @keyframes naar-rechts7 { 
+	0% { 
+		background-color: grey;
+		opacity: 0;
+		transform: translateX(-19em);	
+	}
+	15% { 
+		transform: translateX(0em);
+		opacity: 1;		
+	}
+	59.9% { 
+		transform: translateX(80em);
+		background-color: grey;
+	}
+	60% { 
+		transform: translateX(80em);
+		background-color: grey;
+	}
+	65% { 
+		opacity: 1;
+	}
+	75% { 
+		opacity: 0;
+	}
+	85% { 
+		opacity: 1;
+	}
+   99% {
+		opacity: 1;
+   }
+   100% { 
+		transform: translateX(80em);
+		background-color: green;
+		opacity: 0;
+   }
+} 
+
+
+@keyframes heen-en-terug7 { 
+	0% { 
+		width: 0px;
+		opacity: 1;
+	}
+	25%, 50%, 75% { 
+		width: 70px;
+		opacity: 1;
+	}
+	99% { 
+		opacity: 1;
+	}
+   100% {
+	   width: 0px;
+	   opacity: 0; 
+   }
+}
+
+
+
+
+
+
+/* Sound 8 */
+.sound8 #geluid-hoogte-in { 
+	animation-name: heen-en-terug8;
+	animation-duration: 2s;
+ }
+
+@keyframes heen-en-terug8 { 
+	0% { 
+		width: 70px;
+		opacity: 1;
+	}
+	25%, 50%, 75% { 
+		width: 150px;
+		opacity: 1;
+	}
+	99% { 
+		opacity: 1;
+	}
+   100% {
+	   width: 0px;
+	   opacity: 0; 
+   }
+}
+
+
+
+
+
+
+/* Sound 9 */
+.sound9 #geluid-hoogte-in { 
+	animation-name: heen-en-terug9;
+	animation-duration: 43s;
+	animation-timing-function: linear;
+ }
+
+ .sound9 iframe { 
+	animation-name: piep;
+	animation-duration: 43s;
+	animation-timing-function: linear;
+ }
+
+ #ruis { 
+	 position: absolute;
+	 max-width: 100%;
+	 height: 100vh;
+	 z-index: -1;
+	 opacity: 0;
+ }
+
+ .sound9 #ruis { 
+	animation-name: ruis9;
+	animation-duration: 43s;
+	animation-timing-function: linear;
+ }
+
+ @keyframes ruis9 { 
+	0% { 
+		opacity: 0;
+	}
+	5% { 
+		opacity: 0.1;
+	}
+	99% { 
+		opacity: 0.3;
+	}
+   100% {
+	   opacity: 0; 
+   }
+}
+
+ @keyframes heen-en-terug9 { 
+	0% { 
+		width: 0px;
+		opacity: 1;
+	}
+	99.95% { 
+		width: 200px;
+		opacity: 1;
+	}
+   100% {
+	   width: 0px;
+	   opacity: 0; 
+   }
+}
+
+@keyframes fade-in9 { 
+	0% { 
+	   opacity: 1;
+	}
+	99.99%{ 
+	   opacity: 1;
+	}
+   100% { 
+	   opacity: 0;
+   }
+}
+@keyframes piep { 
+	0% { 
+		filter: blur(0px);
+		clip-path: inset(4.8em 0em);	
+	}
+	50% { 
+		filter: blur(3px);
+	}
+	99.9% { 
+		filter: blur(7px);
+		clip-path: inset(10em 0em);	
+	}
+   100% { 
+	    filter: blur(0px);
+		clip-path: inset(4.8em 0em);
+   }
+}
+
+/* Sound 10 */
+.sound10 #geluid-hoogte-in { 
+	animation-name: heen-en-terug10;
+	animation-duration: 17s;
+	animation-timing-function: linear;
+ }
+
+ .sound10 iframe { 
+	animation-name: piep10;
+	animation-duration: 43s;
+	animation-timing-function: linear;
+ }
+
+ #smoke{ 
+	position: absolute;
+	max-width: 100%;
+	height: 150vh;
+	z-index: -1;
+	opacity: 0;
+}
+
+#smoke2 { 
+	position: absolute;
+	width: 850px;
+	height: 480px;
+	z-index: 999999;
+	opacity: 0;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	pointer-events: none;
+	clip-path: inset(4.8em 0em);
+}
+
+
+.sound10 #smoke { 
+	animation-name: smoke10;
+	animation-duration: 43s;
+	animation-timing-function: linear;
+ }
+
+ .sound10 #smoke2 { 
+	animation-name: smoke102;
+	animation-duration: 43s;
+	animation-timing-function: linear;
+ }
+
+@keyframes smoke10 { 
+	0% { 
+		opacity: 0;
+	}
+	5% { 
+		opacity: 1;
+	}
+	99% { 
+		opacity: 1;
+	}
+   100% {
+	   opacity: 0; 
+   }
+}
+
+@keyframes smoke102 { 
+	0% { 
+		opacity: 0;
+	}
+	5% { 
+		opacity: 0.4;
+		clip-path: inset(4.8em 0em);
+	}
+	100% { 
+		opacity: 0.4;
+		clip-path: inset(10em 0em);
+	}
+}
+
+ @keyframes heen-en-terug10 { 
+	0% { 
+		width: 0px;
+		clip-path: inset(4.8em 0em);
+		opacity: 1;
+	}
+	100% { 
+		width: 64.151px;
+		opacity: 1;
+	}
+}
+
+@keyframes fade-in10 { 
+	0% { 
+	   opacity: 1;
+	}
+	99.99%{ 
+	   opacity: 1;
+	}
+   100% { 
+	   opacity: 0;
+   }
+}
+
+@keyframes piep10 { 
+	0% { 
+		/* filter: blur(0px); */
+		clip-path: inset(4.8em 0em);
+		filter:brightness(.3)
+	}
+	2.5% { 
+		clip-path: inset(4.93em 0em);
+		filter:brightness(0)
+	}
+	5% { 
+		clip-path: inset(5.06em 0em);
+		filter:brightness(1)
+	}
+	17.5% { 
+		clip-path: inset(5.97em 0em);
+		filter:brightness(1)
+	}
+	20% { 
+		clip-path: inset(6.10em 0em);
+		filter:brightness(0)
+	}
+	22.5% { 
+		clip-path: inset(6.23em 0em);
+		filter:brightness(1)
+	}
+	30% { 
+		clip-path: inset(6.36em 0em);
+		filter:brightness(1)
+	}
+	32.5% { 
+		clip-path: inset(6.49em 0em);
+		filter:brightness(0)
+	}
+	35% { 
+		clip-path: inset(6.62em 0em);
+		filter:brightness(1)
+	}
+	50% { 
+		clip-path: inset(7.4em 0em);
+		filter:brightness(1)
+	}
+	52.5% { 
+		clip-path: inset(7.53em 0em);
+		filter:brightness(0)
+	}
+	55% { 
+		clip-path: inset(7.66em 0em);
+		filter:brightness(1)
+	}
+	80% { 
+		clip-path: inset(8.96em 0em);
+		filter:brightness(1)
+	}
+	82.5% { 
+		clip-path: inset(9.09em 0em);
+		filter:brightness(0)
+	}
+	85% { 
+		clip-path: inset(9.22em 0em);
+		filter:brightness(1)
+	}
+	100% { 
+		/* filter: blur(7px); */
+		clip-path: inset(10em 0em);	
+		filter:brightness(1);
+	}
+}
+
+
+
+
+
+/* Sound 11 */
+.sound11 #geluid-hoogte-in { 
+	animation-name: heen-en-terug11;
+	animation-duration: 26s;
+	animation-timing-function: linear;
+}
+
+ #alert { 
+	position: absolute;
+	left: 7em;
+	top: 43vh;
+	max-width: 80x;
+	max-width: 80px;
+	opacity: 0;
+	background: radial-gradient(circle, rgba(255,0,1,1) 0%, rgba(255,0,0,0.15199583251269255) 42%, rgba(255,0,0,0) 100%);
+}
+
+ #alert2{ 
+	position: absolute;
+	right: 7em;
+	top: 43vh;
+	max-width: 80px;
+	max-width: 80px;
+	opacity: 0;
+	background: radial-gradient(circle, rgba(255,0,1,1) 0%, rgba(255,0,0,0.15199583251269255) 42%, rgba(255,0,0,0) 100%);
+ }
+
+ #alert-img { 
+	position: relative;
+	justify-content: center;
+	align-items: center;
+	max-width: 100px;
+	max-height: 100px;
+	filter:blur(50px);
+	opacity: 1;
+ }
+
+ #alert-img2 { 
+	position: relative;
+	justify-content: center;
+	align-items: center;
+	max-width: 100px;
+	max-height: 100px;
+	filter:blur(50px);
+	opacity: 1;
+ }
+
+ .sound11 #alert-img { 
+	animation-name: alert-img;
+	animation-duration: 1s;
+	animation-timing-function: linear;
+ }
+
+ .sound11 #alert-img2 { 
+	animation-name: alert-img2;
+	animation-duration: 1s;
+	animation-timing-function: linear;
+ }
+
+ .sound11 #alert { 
+	animation-name: alert;
+	animation-duration: 1s;
+	animation-timing-function: linear;
+ }
+
+ .sound11 #alert2 { 
+	animation-name: alert2;
+	animation-duration: 1s;
+	animation-timing-function: linear;
+ }
+
+@keyframes alert-img2 { 
+	0% { 
+		transform: scale(1);
+		opacity: 0.3;
+		filter:blur(0px);
+	}
+	1% { 
+		transform: scale(1);
+		opacity: 1;
+		filter:blur(0px);
+	}
+	10% { 
+		transform: scale(1.15);
+		opacity: 1;
+		filter:blur(0px);
+	}
+	40% { 
+		transform: scale(1.5);
+		opacity: 1;
+		filter:blur(0px);
+	}
+	50% { 
+		transform: scale(1.6);
+		opacity: 1;
+		filter:blur(0px);
+	}
+	60% { 
+		transform: scale(1.5);
+		opacity: 1;
+		filter:blur(0px);
+	}
+	90% { 
+		transform: scale(1.15);
+		opacity: 1;
+		filter:blur(0px);
+	}
+	99% { 
+		transform: scale(1);
+		opacity: 0.3;
+		filter:blur(0px);
+	}
+	100% { 
+		opacity: 0;
+	}
+}
+
+@keyframes alert-img { 
+	0% { 
+		transform: scale(1);
+		opacity: 0.3;
+		filter:blur(0px);
+	}
+	1% { 
+		transform: scale(1);
+		opacity: 1;
+		filter:blur(0px);
+	}
+	10% { 
+		transform: scale(1.15);
+		opacity: 1;
+		filter:blur(0px);
+	}
+	40% { 
+		transform: scale(1.5);
+		opacity: 1;
+		filter:blur(0px);
+	}
+	50% { 
+		transform: scale(1.6);
+		opacity: 1;
+		filter:blur(0px);
+	}
+	60% { 
+		transform: scale(1.5);
+		opacity: 1;
+		filter:blur(0px);
+	}
+	90% { 
+		transform: scale(1.15);
+		opacity: 1;
+		filter:blur(0px);
+	}
+	99% { 
+		transform: scale(1);
+		opacity: 0.3;
+		filter:blur(0px);
+	}
+	100% { 
+		opacity: 0;
+	}
+}
+
+@keyframes alert { 
+	0% { 
+		transform: scale(1);
+		opacity: 0.3;
+		filter:blur(50px);
+	}
+	25% { 
+		transform: scale(1.5);
+		opacity: 1;
+		filter:blur(0px);
+	}
+	50% { 
+		transform: scale(2);
+		opacity: 1;
+		filter:blur(0px);
+	}
+	75% { 
+		transform: scale(1.5);
+		opacity: 1;
+		filter:blur(0px);
+	}
+	99% { 
+		transform: scale(1);
+		opacity: 0.3;
+		filter:blur(50px);
+	}
+	100% { 
+		opacity: 0;
+		filter:blur(0px);
+	}
+}
+
+@keyframes alert2 { 
+	0% { 
+		transform: scale(1);
+		opacity: 0.3;
+		filter:blur(50px);
+	}
+	25% { 
+		transform: scale(1.5);
+		opacity: 1;
+		filter:blur(0px);
+	}
+	50% { 
+		transform: scale(2);
+		opacity: 1;
+		filter:blur(0px);
+	}
+	75% { 
+		transform: scale(1.5);
+		opacity: 1;
+		filter:blur(0px);
+	}
+	99% { 
+		transform: scale(1);
+		opacity: 0.3;
+		filter:blur(50px);
+	}
+	100% { 
+		opacity: 0;
+		filter:blur(0px);
+	}
+}
+
+ @keyframes heen-en-terug11 { 
+	0% { 
+		width: 64.151px;
+		opacity: 1;
+	}
+	2.5% { 
+		width: 130px;
+		opacity: 1;
+	}
+	5% { 
+		width: 68px;
+		opacity: 1;
+	}
+	99.9% { 
+		width: 200px;
+		opacity: 1;
+	}
+	100% { 
+		width: 0px;
+		opacity: 0;
+	}
+}
+
+@keyframes fade-in11 { 
+	0% { 
+	   opacity: 1;
+	}
+	99.99%{ 
+	   opacity: 1;
+	}
+   100% { 
+	   opacity: 0;
+   }
+}
+
+
+
+
+
+/* Sound 12 */
+@keyframes fade-in12 { 
+	0% { 
+	   opacity: 1;
+	}
+	99.99%{ 
+	   opacity: 1;
+	}
+   100% { 
+	   opacity: 0;
+   }
+}
+
+
+
+
+
+
+
