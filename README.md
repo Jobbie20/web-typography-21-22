@@ -7,18 +7,23 @@
 ## Ontwerpproces
 
 <strong>Feedback moment in de klas 1</strong>
+
 Tijdens de les heb ik feedback van de docent gekregen. Hij zei dat het implementeren van een geluidbar een goed idee kan zijn. Nu ik zeker weet dat deze toepassing op de opdracht aansluit, zal ik het verder uitwerken. Een verbeterpuntje was om de namen van de stemmen in een zin beter te onderscheiden. Ik had de namen dikgedrukt gemaakt met hetzelfde lettertype. Hierdoor is het niet zo duidelijk of het deel van de tekst is die er gezegd wordt, of dat het de naam weergeeft. Een suggestie was om labels te maken waar de namen van de stemmen op staan. Dit heb ik na de les gemaakt.
 
 <strong>Peer feedback moment 1</strong>
+
 Ik heb de video aan mijn ouders laten zien. Zij vonden de visuele effecten duidelijk, maar ze mistte het effect van de piep. Ik heb daarom het beeldscherm kleiner en waziger laten worden. Daarnaast vertelde ze me dat ze ook een notificatie geluid hoorde in het tweede fragment. Ik had dat nog niet opgemerkt. Ik voeg daarom een sound toe. Als die sound komt, heb ik twee alarm bellen aan de weerszijden van de iframe gezet die knipperen en van klein naar groot gaan. 
 
 <strong>Peer feedback moment 2</strong>
+
 Ik liet het fragment aan een vriend van mij zien. Hij gaf mij de tip om het geluid ook in tekst te omschrijven voor het geval dat iemand het niet begrijpt. Dat vond ik een hele goeie. Ik heb daarom een grote balk boven de iframe gemaakt waar bij elke sound aangegeven wordt welk geluid er te horen is. 
 
 <strong>Feedback moment in de klas 2</strong>
+
 Dit is het laatste feedback moment (in de les) voor de deadline. Ik had alles wat ik wilde maken af, dus ik was benieuwd naar de feedback. Het concept was goed, maar er was ruimte voor verbetering bij de uitvoering. De soundbar staat nu een beetje in de weg van de closed captions. Verder is de grote rode balk die verteld wat het geluid is dat te horen is, veel te dominant. Door deze twee dingen vallen de closed captions weg. Ik heb deze dingen opgelost door de soundbar en de geluidsindicator balk naast elkaar te zetten boven de iframe. Hierdoor is de onderscheiding tussen closed captions en indicatoren voor het geluid duidelijk. De grote rode balk is nu een vierkant blokje en de tekst erin is een veel kleiner gemaakt. Nu is de visuele hiërarchie veel beter. Verder heb ik de closed captions groter gemaakt, omdat daar nu ruimte voor over was onder de closed captions. Nu vallen de closed captions ook veel beter op. 
 
 <strong>Peer feedback moment 3</strong>
+
 Ik heb het eindresultaat bij een vriend van mij getest. Hij had geen opmerkingen. Ik vond het zelf ook goed gelukt.
 
 ## Concept
