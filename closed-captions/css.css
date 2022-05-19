@@ -1146,7 +1146,6 @@ Sounds
  @keyframes heen-en-terug10 { 
 	0% { 
 		width: 0px;
-		clip-path: inset(4.8em 0em);
 		opacity: 1;
 	}
 	100% { 
