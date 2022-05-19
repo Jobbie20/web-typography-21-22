@@ -8,7 +8,7 @@
 
 <strong>Feedback moment in de klas 1</strong>
 
-Tijdens de les heb ik feedback van de docent gekregen. Hij zei dat het implementeren van een geluidbar een goed idee kan zijn. Nu ik zeker weet dat deze toepassing op de opdracht aansluit, zal ik het verder uitwerken. Een verbeterpuntje was om de namen van de stemmen in een zin beter te onderscheiden. Ik had de namen dikgedrukt gemaakt met hetzelfde lettertype. Hierdoor is het niet zo duidelijk of het deel van de tekst is die er gezegd wordt, of dat het de naam weergeeft. Een suggestie was om labels te maken waar de namen van de stemmen op staan. Dit heb ik na de les gemaakt.
+<details open>Tijdens de les heb ik feedback van de docent gekregen. Hij zei dat het implementeren van een geluidbar een goed idee kan zijn. Nu ik zeker weet dat deze toepassing op de opdracht aansluit, zal ik het verder uitwerken. Een verbeterpuntje was om de namen van de stemmen in een zin beter te onderscheiden. Ik had de namen dikgedrukt gemaakt met hetzelfde lettertype. Hierdoor is het niet zo duidelijk of het deel van de tekst is die er gezegd wordt, of dat het de naam weergeeft. Een suggestie was om labels te maken waar de namen van de stemmen op staan. Dit heb ik na de les gemaakt.</details>
 
 <strong>Peer feedback moment 1</strong>
 
