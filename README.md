@@ -50,8 +50,11 @@ Dan kijken we naar de soundbar en het blokje met tekst ernaast dat verschijnt al
 <details open>
 
 1. https://thenounproject.com/icon/speaker-10453/
+
 2. https://tenor.com/view/white-noise-gif-24799193
+
 3. https://gifer.com/en/DgUV
+
 4. https://thenounproject.com/icon/alert-1173970/
 
 </details>
