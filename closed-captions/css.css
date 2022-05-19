@@ -1168,7 +1168,6 @@ Sounds
 
 @keyframes piep10 { 
 	0% { 
-		/* filter: blur(0px); */
 		clip-path: inset(4.8em 0em);
 		filter:brightness(.3)
 	}
@@ -1229,7 +1228,6 @@ Sounds
 		filter:brightness(1)
 	}
 	100% { 
-		/* filter: blur(7px); */
 		clip-path: inset(10em 0em);	
 		filter:brightness(1);
 	}
